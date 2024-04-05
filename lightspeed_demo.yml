@@ -1,0 +1,27 @@
+---
+- name: Configure a postgres database because \#reasons
+  hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+  - name: Install the postgres package
+    # Content suggestion provided by Ansible Lightspeed
+    ansible.builtin.package:
+      name:
+        - postgresql
+        - postgresql-client
+        - postgresql-contrib
+        - python3-psycopg2
+      state: present
+  - name: enable the postgres service
+    # Content suggestion provided by Ansible Lightspeed
+    ansible.builtin.service:
+      name: postgresql
+      enabled: true
+  - name: open the postgres port on the firewall
+    # Content suggestion provided by Ansible Lightspeed
+    ansible.posix.firewalld:
+      port: 5432/tcp
+      permanent: true
+      state: enabled
+      immediate: true
