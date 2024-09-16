@@ -5,7 +5,7 @@
       ansible.builtin.debug:
         msg: go-go-codebot! Fix my issues
 
-    - ansible.builtin.debug: "This is also a terrible piece of code running on {{ ansible_hostname }}"
-    
+    - ansible.builtin.debug: This is also a terrible piece of code running on {{ ansible_hostname }}
+
     - name: And one more really bad task
-      ansible.builtin.command: "ls ~"
+      ansible.builtin.command: ls ~
